@@ -1,0 +1,32 @@
+group = 'org.hl7.davinci.alerts.refimpl'
+version = '0.0.1-SNAPSHOT'
+description = ''
+
+apply plugin: 'java'
+
+plugins {
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.6'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+    compile 'org.springframework.boot:spring-boot-starter-web:2.1.4.RELEASE'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools:2.1.4.RELEASE'
+
+    compile 'ca.uhn.hapi.fhir:hapi-fhir-structures-r4:4.0.3'
+    compile 'ca.uhn.hapi.fhir:hapi-fhir-client:4.0.3'
+    compile 'ca.uhn.hapi.fhir:hapi-fhir-server:4.0.3'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test:2.1.4.RELEASE'
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
