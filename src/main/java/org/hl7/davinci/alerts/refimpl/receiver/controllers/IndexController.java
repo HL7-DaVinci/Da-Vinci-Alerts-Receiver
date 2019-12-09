@@ -12,19 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class IndexController {
 
-    @Autowired
-    private MessageService messageService;
+  private MessageService messageService;
 
-    @GetMapping("/launch")
-    public String main() {
-        return "index";
-    }
+  @Autowired
+  public IndexController(MessageService messageService) {
+    this.messageService = messageService;
+  }
 
-    @GetMapping(value = "/subscribe", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public SseEmitter subscribe(HttpServletResponse response) {
-        response.setHeader("Cache-Control", "no-store");
-        return messageService.subscribe();
-    }
+  @GetMapping("/launch")
+  public String main() {
+    return "index";
+  }
 
+  @GetMapping(value = "/subscribe", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+  public SseEmitter subscribe(HttpServletResponse response) {
+    response.setHeader("Cache-Control", "no-store");
+    return messageService.subscribe();
+  }
 
 }

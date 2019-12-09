@@ -9,14 +9,14 @@ import org.springframework.context.annotation.Configuration;
 public class FhirConfig {
 
   @Bean
-  public FhirContext fhirContext() {
-    //We are using R4 both at Payer and Provider.
+  FhirContext fhirContext() {
     return FhirContext.forR4();
   }
 
   @Bean
-  public IParser iParser() {
-    return fhirContext().newJsonParser().setPrettyPrint(true);
+  IParser iParser(FhirContext fhirContext) {
+    return fhirContext.newJsonParser()
+        .setPrettyPrint(true);
   }
 
 }

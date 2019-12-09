@@ -6,8 +6,8 @@ public class Message {
     private final String code;
     private final String content;
 
-    Message(String channelType, String patientString, String code, String content) {
-        this.channelType = channelType;
+    Message(String patientString, String code, String content) {
+        this.channelType = "$process-message";
         this.patientString = patientString;
         this.code = code;
         this.content = content;
