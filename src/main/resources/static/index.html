@@ -30,7 +30,12 @@
 		    align-items: center;
 		}
 
-
+        .download-link {
+            margin-left: 20px;
+            text-decoration: none;
+            padding: 5px 20px;
+            font-size: 12px;
+        }
     </style>
 </head>
 
@@ -44,7 +49,15 @@
             <el-collapse v-model="collapseMessages">
                 <el-collapse-item v-for="msg in messages">
                     <template slot="title">
-                        [{{ msg.channelType}}] for "{{ msg.patientString}}" with code  ({{msg.code}})
+                        <span>[{{ msg.channelType }}] for "{{ msg.patientString }}" with code  ({{ msg.code }})</span>
+                        <a
+                                :href="'data:text/json;charset=utf-8,' + encodeURIComponent(msg.content)"
+                                download="message.json"
+                                class="el-button download-link"
+                                @click.stop
+                        >
+                            Download
+                        </a>
                     </template>
                     <div>
                         <div>
